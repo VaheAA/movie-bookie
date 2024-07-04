@@ -1,12 +1,8 @@
-export interface ISeat {
-	roomId: number
-	rowNumber: number
-	seatNumber: number
+export interface IRoom {
+	id: number
+	name: string
+	createdAt?: Date
+	updatedAt?: Date
 }
 
-export interface IRoom {
-	id: string
-	name: string
-	seats: ISeat[]
-	totalSeats: number
-}
+export type RoomCreation = Omit<IRoom, 'id'>
