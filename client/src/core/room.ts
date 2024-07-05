@@ -1,12 +1,11 @@
-export interface ISeat {
-  label: string
-  selected: boolean
-  available: boolean
-}
+import { IShowtime } from './showtime'
 
 export interface IRoom {
-  id: string
-  name: string
-  seats: ISeat[]
-  totalSeats: number
+	id: number
+	name: string
+	showtimes?: IShowtime[]
+	createdAt?: Date
+	updatedAt?: Date
 }
+
+export type RoomCreation = Omit<IRoom, 'id'>

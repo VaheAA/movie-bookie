@@ -1,9 +1,18 @@
-import { Room } from '../../models'
-import { IRoom, RoomCreation } from '../../core/room'
+import { Room, Seat } from '../../models'
+import { IRoom, RoomCreation } from '../../core'
 
 export class RoomService {
 	async getAllRooms(): Promise<IRoom[]> {
 		return await Room.findAll()
+	}
+
+	async getSingleRoom(id: number): Promise<IRoom | null> {
+		return await Room.findOne({
+			where: {
+				id
+			},
+			raw: true
+		})
 	}
 
 	async createRoom(room: RoomCreation): Promise<Room> {

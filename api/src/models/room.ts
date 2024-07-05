@@ -18,9 +18,10 @@ Room.init(
 	},
 	{
 		sequelize,
-		modelName: 'Room',
+		modelName: 'room',
 		tableName: 'rooms',
-		timestamps: true
+		timestamps: true,
+		underscored: true
 	}
 )
 

@@ -1,2 +1,5 @@
-export type { IMovie } from './movie'
-export type { IRoom, ISeat } from './room'
+export { ISeat, SeatCreation } from './seat'
+export { IRoom, RoomCreation } from './room'
+export { IBooking, BookingCreation } from './booking'
+export { IMovie, MovieCreation } from './movie'
+export { IShowtime, ShowtimeCreation } from './showtime'

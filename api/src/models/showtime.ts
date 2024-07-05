@@ -24,20 +24,21 @@ Showtime.init(
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			references: {
-				model: 'rooms', // refers to table name
-				key: 'id' // 'id' is the column name in the parent table
+				model: 'rooms',
+				key: 'id'
 			}
 		},
 		movie_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
+			field: 'movie_id',
 			references: {
-				model: 'movies', // refers to table name
+				model: 'movies',
 				key: 'id'
 			}
 		}
 	},
-	{ sequelize, modelName: 'Showtime', tableName: 'showtimes', timestamps: true }
+	{ sequelize, modelName: 'showtime', tableName: 'showtimes', timestamps: true, underscored: true }
 )
 
 export { Showtime }

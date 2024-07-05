@@ -28,7 +28,7 @@ Seat.init(
 		row_number: DataTypes.INTEGER,
 		seat_number: DataTypes.INTEGER
 	},
-	{ sequelize, modelName: 'Seat', tableName: 'seats' }
+	{ sequelize, modelName: 'seat', tableName: 'seats', timestamps: true, underscored: true }
 )
 
 export { Seat }

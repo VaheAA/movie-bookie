@@ -26,8 +26,9 @@ Movie.init(
 	},
 	{
 		sequelize,
-		modelName: 'Movie',
+		modelName: 'movie',
 		tableName: 'movies',
+		underscored: true,
 		timestamps: true
 	}
 )

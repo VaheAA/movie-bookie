@@ -1,9 +1,9 @@
 export interface IMovie {
-  id: string
-  name: string
-  schedule: string
-  description: string
-  image: string
-  room: string
-  trailer: string
+	id: number
+	title: string
+	poster_url: string
+	createdAt?: Date
+	updatedAt?: Date
 }
+
+export type MovieCreation = Omit<IMovie, 'id'>

@@ -4,8 +4,8 @@ export interface IShowtime {
 	end_time: Date
 	room_id: number
 	movie_id: number
-	created_at?: Date
-	updated_at?: Date
+	createdAt?: Date
+	updatedAt?: Date
 }
 
 export type ShowtimeCreation = Omit<IShowtime, 'id'>

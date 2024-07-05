@@ -1,12 +1,13 @@
 import { Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize'
 import sequelize from '../../config/db'
-import { IBooking } from '../core/booking'
+import { IBooking } from '../core'
 
 class Booking extends Model<InferAttributes<Booking>, InferCreationAttributes<Booking>> implements IBooking {
-	declare id: CreationOptional<number>
-	declare showtime_id: number
-	declare seat_id: number
-	declare booked_at: Date
+	declare id?: CreationOptional<number>
+	declare showtime_id?: number
+	declare seat_id?: number
+	declare is_active?: boolean
+	declare booked_at?: Date
 }
 
 Booking.init(
@@ -32,15 +33,21 @@ Booking.init(
 				key: 'id'
 			}
 		},
+		is_active: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
+		},
 		booked_at: {
 			type: DataTypes.DATE,
-			allowNull: false
+			allowNull: false,
+			defaultValue: DataTypes.NOW
 		}
 	},
 	{
 		sequelize,
-		modelName: 'Booking',
+		modelName: 'booking',
 		tableName: 'bookings',
+		underscored: true,
 		timestamps: true
 	}
 )

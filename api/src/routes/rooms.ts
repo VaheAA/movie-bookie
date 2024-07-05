@@ -1,7 +1,8 @@
 import { Router } from 'express'
-import { getAllRooms } from '../controllers/rooms'
+import { getAllRooms, getSingleRoom } from '../controllers'
 const router = Router()
 
 router.get('/', getAllRooms)
+router.get('/:id', getSingleRoom)
 
 export { router as rooms }
