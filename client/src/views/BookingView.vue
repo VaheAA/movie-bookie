@@ -98,9 +98,10 @@ const selectMovie = async (movieId: number) => {
 	await nextTick(() => scrollToBottom())
 }
 
-const constructBookingData = (seatId: number) => ({
+const constructBookingData = (seatId: number): Partial<IBooking> => ({
 	seat_id: seatId,
-	showtime_id: selectedMovie.value?.id
+	showtime_id: selectedMovie.value?.id,
+	is_active: true
 })
 
 const availableSeats = computed(() => {
