@@ -1,11 +1,13 @@
-import { IShowtime } from './showtime'
+import { type IShowtime } from './showtime'
+import type { ISeat } from '@/core/seat'
 
 export interface IRoom {
 	id: number
 	name: string
 	showtimes?: IShowtime[]
-	createdAt?: Date
-	updatedAt?: Date
+	seats?: ISeat[]
+	created_at?: Date
+	updated_at?: Date
 }
 
 export type RoomCreation = Omit<IRoom, 'id'>

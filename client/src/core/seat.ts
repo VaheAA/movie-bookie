@@ -3,8 +3,8 @@ export interface ISeat {
 	room_id: number
 	row_number: number
 	seat_number: number
-	createdAt?: Date
-	updatedAt?: Date
+	created_at?: Date
+	updated_at?: Date
 }
 
 export type SeatCreation = Omit<ISeat, 'id'>

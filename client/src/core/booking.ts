@@ -1,10 +1,10 @@
 export interface IBooking {
-	id: number
+	id?: number
 	showtime_id: number
 	seat_id: number
 	booked_at: Date
-	createdAt?: Date
-	updatedAt?: Date
+	created_at?: Date
+	updated_at?: Date
 }
 
 export type BookingCreation = Omit<IBooking, 'id'>
