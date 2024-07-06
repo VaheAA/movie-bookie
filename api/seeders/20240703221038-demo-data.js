@@ -45,7 +45,7 @@ module.exports = {
 		movies.forEach((movie, movieIndex) => {
 			rooms.forEach((room, roomIndex) => {
 				const startTime = faker.date.future()
-				const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000) // Each movie lasts 2 hours
+				const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000)
 				showtimes.push({
 					movie_id: movieIndex + 1,
 					room_id: roomIndex + 1,
