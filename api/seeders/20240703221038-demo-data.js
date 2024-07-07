@@ -44,19 +44,31 @@ module.exports = {
 
 		movies.forEach((movie, movieIndex) => {
 			rooms.forEach((room, roomIndex) => {
-				const today = new Date()
-				const startHour = Math.floor(Math.random() * 24)
-				const startTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), startHour, 0, 0)
-				const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000)
+				for (let day = 0; day < 7; day++) {
+					const today = new Date()
+					const futureDate = new Date(today)
+					futureDate.setDate(today.getDate() + day)
 
-				showtimes.push({
-					movie_id: movieIndex + 1,
-					room_id: roomIndex + 1,
-					start_time: startTime,
-					end_time: endTime,
-					created_at: new Date(),
-					updated_at: new Date()
-				})
+					const startHour = Math.floor(Math.random() * 24)
+					const startTime = new Date(
+						futureDate.getFullYear(),
+						futureDate.getMonth(),
+						futureDate.getDate(),
+						startHour,
+						0,
+						0
+					)
+					const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000) // 2 hours later
+
+					showtimes.push({
+						movie_id: movieIndex + 1,
+						room_id: roomIndex + 1,
+						start_time: startTime,
+						end_time: endTime,
+						created_at: new Date(),
+						updated_at: new Date()
+					})
+				}
 			})
 		})
 
