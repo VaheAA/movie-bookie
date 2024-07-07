@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(errorHandlerMiddleware)
 app.use('/api', router)
 
-const allowedOrigins = ['https://movie-bookie.vercel.app/']
+const allowedOrigins = ['https://movie-bookie.vercel.app']
 
 app.use(
 	cors({
