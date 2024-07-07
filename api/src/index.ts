@@ -17,6 +17,24 @@ app.use(express.json())
 app.use(errorHandlerMiddleware)
 app.use('/api', router)
 
+const allowedOrigins = ['https://movie-bookie.vercel.app/'] // Add more as needed
+
+app.use(
+	cors({
+		origin: (origin, callback) => {
+			if (!origin || allowedOrigins.includes(origin)) {
+				callback(null, true)
+			} else {
+				callback(new Error('Not allowed by CORS'))
+			}
+		},
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+		preflightContinue: false,
+		optionsSuccessStatus: 204
+	})
+)
+app.options('*', cors())
+
 const initDb = async () => {
 	await sequelize.authenticate()
 	setupAssociations()
