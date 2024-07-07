@@ -1,5 +1,15 @@
 <template>
-	<div class="h-screen flex justify-center items-center">
-		<div class="w-10 h-10 border-3 border-transparent border-t-[#2ed3c5] rounded-full animate-spin"></div>
+	<div class="fixed top-0 left-0 bottom-0 right-0 flex flex-col items-center justify-center h-screen">
+		<ProgressSpinner
+			style="width: 50px; height: 50px"
+			strokeWidth="8"
+			fill="transparent"
+			animationDuration=".5s"
+			aria-label="Custom ProgressSpinner"
+		/>
 	</div>
 </template>
+
+<script setup lang="ts">
+import ProgressSpinner from 'primevue/progressspinner'
+</script>

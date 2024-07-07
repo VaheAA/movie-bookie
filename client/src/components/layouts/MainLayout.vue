@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <app-header />
-    <main class="pt-24">
-      <router-view />
-    </main>
-  </div>
+	<div class="h-full">
+		<app-header />
+		<main class="pt-24 h-full">
+			<router-view />
+		</main>
+	</div>
 </template>
 
 <script setup lang="ts">
