@@ -4,8 +4,11 @@ const { faker } = require('@faker-js/faker')
 
 module.exports = {
 	async up(queryInterface, Sequelize) {
+		const colors = ['Red', 'Green', 'Blue']
+		const colorElements = colors.flatMap(color => Array(3).fill(color))
+
 		const rooms = [...Array(3)].map(() => ({
-			name: faker.helpers.arrayElement(['Red', 'Green', 'Blue']),
+			name: faker.helpers.unique(faker.helpers.arrayElement, [['Red', 'Green', 'Blue']]),
 			created_at: new Date(),
 			updated_at: new Date()
 		}))
@@ -20,13 +23,10 @@ module.exports = {
 		}))
 		await queryInterface.bulkInsert('movies', movies)
 
-		// Create fake seats for each room
 		const allSeats = []
 		rooms.forEach((room, index) => {
 			for (let row = 1; row <= 10; row++) {
-				// 10 rows
 				for (let seat = 1; seat <= 8; seat++) {
-					// 8 seats per row
 					allSeats.push({
 						room_id: Number(index) + 1,
 						row_number: row,
@@ -44,8 +44,11 @@ module.exports = {
 
 		movies.forEach((movie, movieIndex) => {
 			rooms.forEach((room, roomIndex) => {
-				const startTime = faker.date.future()
+				const today = new Date()
+				const startHour = Math.floor(Math.random() * 24)
+				const startTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), startHour, 0, 0)
 				const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000)
+
 				showtimes.push({
 					movie_id: movieIndex + 1,
 					room_id: roomIndex + 1,
@@ -56,6 +59,7 @@ module.exports = {
 				})
 			})
 		})
+
 		await queryInterface.bulkInsert('showtimes', showtimes)
 	},
 

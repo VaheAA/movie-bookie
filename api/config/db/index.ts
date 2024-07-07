@@ -1,10 +1,9 @@
 import { Sequelize } from 'sequelize'
 import config from '../config'
 
-const sequelize = new Sequelize('movie', 'postgres', 'root', {
-	host: config.host,
-	dialect: 'postgres'
-})
+const sequelize = new Sequelize(
+	`postgres://${config.username}:${config.password}@${config.host}:5432/${config.database}`
+)
 
 sequelize
 	.authenticate()

@@ -7,6 +7,7 @@ export class ShowtimesService {
 			where: {
 				room_id: roomId
 			},
+			order: [['start_time', 'ASC']],
 			include: [
 				{
 					model: Movie,

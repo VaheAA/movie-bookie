@@ -17,13 +17,14 @@ app.use(express.json())
 app.use(errorHandlerMiddleware)
 app.use('/api', router)
 
+const initDb = async () => {
+	await sequelize.authenticate()
+	setupAssociations()
+	await sequelize.sync()
+}
+
 const start = async () => {
 	try {
-		await sequelize.authenticate()
-		setupAssociations()
-		console.log('Connection has been established successfully.')
-		// await sequelize.sync({ force: true })
-		// console.log('All models were synchronized successfully.')
 		app.listen(port, () => console.log(`Server is listening on port ${port}...`))
 	} catch (error) {
 		console.error('Unable to connect to the database:', error)
@@ -31,3 +32,4 @@ const start = async () => {
 }
 
 void start()
+void initDb()
