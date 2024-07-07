@@ -12,7 +12,12 @@
 					<p class="mb-4 font-medium text-md">Room: {{ roomName }}</p>
 					<p class="mb-4 font-medium text-md">Start: {{ formatDate(slotProps.data.start_time) }}</p>
 					<p class="mb-4 font-medium text-md">End: {{ formatDate(slotProps.data.end_time) }}</p>
-					<Button label="Book now" class="mt-auto" @click="selectMovie(slotProps.data.movie.id)" />
+					<Button
+						:disabled="isExpired(slotProps.data.end_time)"
+						label="Book now"
+						class="mt-auto"
+						@click="selectMovie(slotProps.data.movie.id)"
+					/>
 				</div>
 			</div>
 		</template>
@@ -24,7 +29,7 @@ import Carousel from 'primevue/carousel'
 import Button from 'primevue/button'
 import { ref } from 'vue'
 import type { IShowtime } from '@/core'
-import { formatDate } from '@/shared/helpers'
+import { isExpired, formatDate } from '@/shared/helpers'
 
 const props = defineProps<{ showtimes: IShowtime[] | undefined; roomName: string }>()
 

@@ -2,7 +2,7 @@
 	<div class="container mx-auto p-4">
 		<div class="max-w-[1200px] mx-auto" v-if="currentRoom">
 			<h2 class="text-6xl text-center py-10">Select your next watch!</h2>
-			<movie-carousel :room-name="currentRoom?.name" :showtimes="currentRoom.showtimes" @select-movie="selectMovie" />
+			<movie-carousel :room-name="currentRoom?.name" :showtimes="sortedShowtimes" @select-movie="selectMovie" />
 		</div>
 		<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
 			<MovieDetails
@@ -50,7 +50,7 @@ import Toast from 'primevue/toast'
 import { computed, nextTick, onMounted, ref } from 'vue'
 import type { IBooking, IRoom, ISeat, IShowtime } from '@/core'
 import MovieCarousel from '@/components/movie/MovieCarousel.vue'
-import { scrollToBottom } from '@/shared/helpers'
+import { isExpired, scrollToBottom } from '@/shared/helpers'
 import { useRoomsStore } from '@/stores/rooms'
 import { useRoute } from 'vue-router'
 import { bookSeat, getBookingsByShowtime } from '@/services/bookings'
@@ -107,5 +107,22 @@ const constructBookingData = (seatId: number): Partial<IBooking> => ({
 const availableSeats = computed(() => {
 	if (!currentRoom?.value?.seats?.length) return 0
 	return currentRoom?.value.seats.length - bookedSeats.value.length
+})
+
+const sortedShowtimes = computed(() => {
+	const clonedArr = [...(currentRoom?.value?.showtimes || [])]
+
+	return clonedArr.sort((a, b) => {
+		const aExpired = isExpired(String(a.end_time))
+		const bExpired = isExpired(String(b.end_time))
+
+		if (aExpired && !bExpired) {
+			return 1
+		} else if (!aExpired && bExpired) {
+			return -1
+		} else {
+			return 0
+		}
+	})
 })
 </script>

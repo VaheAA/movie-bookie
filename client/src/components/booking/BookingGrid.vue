@@ -32,5 +32,5 @@ const toggleSeat = (seatId: number) => {
 	emit('toggleSeat', seatId)
 }
 
-const isBooked = (seatId: number) => props.bookedSeats.find(({ seat_id }) => seat_id === seatId)
+const isBooked = (seatId: number) => props.bookedSeats.find(({ seat_id, is_active }) => seat_id === seatId && is_active)
 </script>

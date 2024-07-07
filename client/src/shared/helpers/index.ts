@@ -1,3 +1,3 @@
 export { scrollToBottom } from './scrollToBottom'
-export { formatDate } from './formatDate'
+export { formatDate, isExpired } from './dates'
 export { getSeatLabel } from './getSeatLabel'
