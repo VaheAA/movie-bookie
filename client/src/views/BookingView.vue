@@ -7,7 +7,7 @@
 		<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
 			<MovieDetails :room-name="currentRoom?.name" :movie="selectedMovie.movie" :available-seats="availableSeats" />
 			<p class="text-4xl text-center py-2">Selects your seats!</p>
-			<div class="flex flex-col flex-md-row gap-6">
+			<div class="flex flex-col md:flex-row gap-6">
 				<div v-if="currentRoom">
 					<span class="inline-block my-2">All seats:</span>
 					<BookingGrid :room="currentRoom" :booked-seats="bookedSeats" @toggle-seat="toggleSeat" />
