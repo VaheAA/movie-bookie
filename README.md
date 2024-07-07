@@ -13,7 +13,7 @@
 
 ## Overview
 
-This project is a web application built using Vue for the frontend and Node.js (Express) with TypeScript and Sequelize for the backend. The application manages movies data and provides an interface for users to view and interact with the movie listings.
+This project is a web application built using Vue for the frontend and Node.js (Express) with TypeScript and Sequelize for the backend. The application manages movies data and provides an interface for users to view and interact with the movie listings, select and book seats. As well as uses cron job to modify the expired bookings and seats.
 
 ## Demo
 
