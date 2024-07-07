@@ -1,5 +1,7 @@
 <template>
-	<div class="fixed top-0 left-0 bottom-0 right-0 flex flex-col items-center justify-center h-full z-10">
+	<div
+		class="fixed top-0 left-0 bottom-0 right-0 flex flex-col items-center justify-center h-full z-10 bg-opacity-25 bg-slate-100"
+	>
 		<ProgressSpinner
 			style="width: 50px; height: 50px"
 			strokeWidth="8"

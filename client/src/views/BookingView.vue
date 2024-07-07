@@ -1,51 +1,44 @@
 <template>
-	<div class="container mx-auto p-4 relative">
-		<template v-if="!loading">
-			<div class="max-w-[1200px] mx-auto" v-if="currentRoom">
-				<h2 class="text-6xl text-center py-10">Select your next watch!</h2>
-				<movie-carousel :room-name="currentRoom?.name" :showtimes="sortedShowtimes" @select-movie="selectMovie" />
-			</div>
-			<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
-				<MovieDetails
-					:room-name="currentRoom?.name"
-					:movie="selectedMovie.movie"
-					:start="String(selectedMovie.start_time)"
-					:end="String(selectedMovie.end_time)"
-					:available-seats="availableSeats"
-				/>
-				<p class="text-4xl text-center py-2">Selects your seats!</p>
-				<div class="flex gap-6">
-					<div v-if="currentRoom">
-						<span class="inline-block my-2">All seats:</span>
-						<BookingGrid :room="currentRoom" :booked-seats="bookedSeats" @toggle-seat="toggleSeat" />
-					</div>
-					<div class="flex-1 flex flex-col">
+	<div class="container mx-auto p-4">
+		<div class="max-w-[1200px] mx-auto" v-if="currentRoom">
+			<h2 class="text-6xl text-center py-10">Select your next watch!</h2>
+			<movie-carousel :room-name="currentRoom?.name" :showtimes="sortedShowtimes" @select-movie="selectMovie" />
+		</div>
+		<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
+			<MovieDetails
+				:room-name="currentRoom?.name"
+				:movie="selectedMovie.movie"
+				:start="String(selectedMovie.start_time)"
+				:end="String(selectedMovie.end_time)"
+				:available-seats="availableSeats"
+			/>
+			<p class="text-4xl text-center py-2">Selects your seats!</p>
+			<div class="flex gap-6">
+				<div v-if="currentRoom">
+					<span class="inline-block my-2">All seats:</span>
+					<BookingGrid :room="currentRoom" :booked-seats="bookedSeats" @toggle-seat="toggleSeat" />
+				</div>
+				<div class="flex-1 flex flex-col">
+					<div>
+						<span class="inline-block my-2">Selected seats:</span>
 						<div>
-							<span class="inline-block my-2">Selected seats:</span>
-							<div>
-								<Button
-									class="m-1"
-									size="small"
-									v-for="seat in selectedSeats"
-									:key="seat"
-									@click="toggleSeat(seat.id)"
-									>{{ getSeatLabel(seat.row_number, seat.seat_number) }}</Button
-								>
-							</div>
+							<Button class="m-1" size="small" v-for="seat in selectedSeats" :key="seat" @click="toggleSeat(seat.id)">{{
+								getSeatLabel(seat.row_number, seat.seat_number)
+							}}</Button>
 						</div>
-						<div class="text-center mt-auto">
-							<Button
-								:disabled="!selectedSeats.length"
-								label="Book Now"
-								class="p-button-raised p-button-danger"
-								:loading="loading"
-								@click="bookTickets"
-							/>
-						</div>
+					</div>
+					<div class="text-center mt-auto">
+						<Button
+							:disabled="!selectedSeats.length"
+							label="Book Now"
+							class="p-button-raised p-button-danger"
+							:loading="loading"
+							@click="bookTickets"
+						/>
 					</div>
 				</div>
 			</div>
-		</template>
+		</div>
 
 		<app-loader v-if="loading" />
 	</div>
