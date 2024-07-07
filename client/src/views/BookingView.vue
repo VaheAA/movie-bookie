@@ -5,11 +5,10 @@
 			<movie-carousel :room-name="currentRoom?.name" :showtimes="sortedShowtimes" @select-movie="selectMovie" />
 		</div>
 		<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
-			{{ selectedMovie }}
 			<MovieDetails
 				:room-name="currentRoom?.name"
 				:movie="selectedMovie.movie"
-				:start="String(selectedMovie.start_time)"
+				:start="selectedMovie.start_time"
 				:end="String(selectedMovie.end_time)"
 				:available-seats="availableSeats"
 			/>
@@ -54,7 +53,7 @@ import Toast from 'primevue/toast'
 import { computed, nextTick, onMounted, ref } from 'vue'
 import type { IBooking, IRoom, ISeat, IShowtime } from '@/core'
 import MovieCarousel from '@/components/movie/MovieCarousel.vue'
-import { isExpired, scrollToBottom } from '@/shared/helpers'
+import { formatDate, isExpired, scrollToBottom } from '@/shared/helpers'
 import { useRoomsStore } from '@/stores/rooms'
 import { useRoute } from 'vue-router'
 import { bookSeat, getBookingsByShowtime } from '@/services/bookings'

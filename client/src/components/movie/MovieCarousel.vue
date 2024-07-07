@@ -1,7 +1,7 @@
 <template>
 	<Carousel :value="props.showtimes" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
 		<template #item="slotProps">
-			<div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4 max-auto h-[600px]">
+			<div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4 max-w-auto h-[600px]">
 				<div class="flex flex-col w-full h-full">
 					<div class="mb-4">
 						<div class="relative mx-auto">

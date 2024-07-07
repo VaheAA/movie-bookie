@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="max-w-[1300px] mx-auto pt-10 relative">
+	<div class="max-w-[1300px] mx-auto pt-10 px-5 relative">
 		<h2 class="text-4xl mb-3">Available rooms</h2>
 		<room-list />
 	</div>

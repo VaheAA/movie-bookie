@@ -1,6 +1,6 @@
 <template>
-	<div class="flex flex-col gap-4">
-		<div class="grid grid-cols-4 grid-md-cols-8 gap-2 max-w-[600px] w-full">
+	<div class="flex flex-col flex-md-row gap-4">
+		<div class="grid grid-cols-4 md:grid-cols-8 gap-2 max-w-[600px] w-full">
 			<div v-for="(seat, index) in room.seats" :key="index" class="p-1">
 				<Button
 					size="small"
