@@ -6,13 +6,6 @@
 					<h1 class="text-4xl">Movie Bookie</h1>
 				</router-link>
 			</template>
-
-			<template #end>
-				<div class="flex gap-2">
-					<Button label="Sign in" @click="toggleModal(true, 'login')" />
-					<Button label="Sign up" @click="toggleModal(true, 'register')" />
-				</div>
-			</template>
 		</Toolbar>
 	</header>
 </template>

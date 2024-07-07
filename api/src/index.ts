@@ -30,8 +30,10 @@ app.use(
 )
 
 app.use(express.json())
-app.use(errorHandlerMiddleware)
+
 app.use('/api', router)
+
+app.use(errorHandlerMiddleware)
 
 const initDb = async () => {
 	await sequelize.authenticate()
@@ -41,6 +43,7 @@ const initDb = async () => {
 
 const start = async () => {
 	try {
+		await initDb()
 		app.listen(port, () => console.log(`Server is listening on port ${port}...`))
 	} catch (error) {
 		console.error('Unable to connect to the database:', error)
@@ -48,4 +51,3 @@ const start = async () => {
 }
 
 void start()
-void initDb()
