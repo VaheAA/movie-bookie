@@ -17,7 +17,7 @@ app.use(express.json())
 app.use(errorHandlerMiddleware)
 app.use('/api', router)
 
-const allowedOrigins = ['https://movie-bookie.vercel.app/'] // Add more as needed
+const allowedOrigins = ['https://movie-bookie.vercel.app/']
 
 app.use(
 	cors({
@@ -34,6 +34,13 @@ app.use(
 	})
 )
 app.options('*', cors())
+
+app.use((req, res, next) => {
+	res.setHeader('Access-Control-Allow-Origin', '*')
+	res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
+	next()
+})
 
 const initDb = async () => {
 	await sequelize.authenticate()
