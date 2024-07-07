@@ -12,11 +12,6 @@ dotenv.config()
 const app: Express = express()
 const port = process.env.PORT || 3000
 
-app.use(cors())
-app.use(express.json())
-app.use(errorHandlerMiddleware)
-app.use('/api', router)
-
 const allowedOrigins = ['https://movie-bookie.vercel.app']
 
 app.use(
@@ -33,14 +28,10 @@ app.use(
 		optionsSuccessStatus: 204
 	})
 )
-app.options('*', cors())
 
-app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', '*')
-	res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
-	next()
-})
+app.use(express.json())
+app.use(errorHandlerMiddleware)
+app.use('/api', router)
 
 const initDb = async () => {
 	await sequelize.authenticate()
