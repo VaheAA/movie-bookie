@@ -1,5 +1,5 @@
 <template>
-	<div class="grid grid-cols-1 gap-4 relative" v-if="rooms.length">
+	<div class="grid grid-cols-1 gap-4" v-if="rooms.length && !loading">
 		<div class="p-4 shadow-sm rounded-lg shadow-emerald-50" v-for="room in rooms" :key="room.id">
 			<div class="flex items-center justify-between">
 				<div>
