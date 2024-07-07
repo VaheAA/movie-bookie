@@ -30,8 +30,19 @@ app.use(
 )
 
 app.use(express.json())
-app.use(errorHandlerMiddleware)
+
+// Explicit CORS headers for /api/rooms
+app.use('/api/rooms', (req, res, next) => {
+	res.header('Access-Control-Allow-Origin', 'https://movie-bookie.vercel.app')
+	res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE')
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+	next()
+})
+
 app.use('/api', router)
+
+// This middleware should come after all route definitions
+app.use(errorHandlerMiddleware)
 
 const initDb = async () => {
 	await sequelize.authenticate()
@@ -41,6 +52,7 @@ const initDb = async () => {
 
 const start = async () => {
 	try {
+		await initDb()
 		app.listen(port, () => console.log(`Server is listening on port ${port}...`))
 	} catch (error) {
 		console.error('Unable to connect to the database:', error)
@@ -48,4 +60,3 @@ const start = async () => {
 }
 
 void start()
-void initDb()
