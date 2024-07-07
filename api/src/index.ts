@@ -12,7 +12,7 @@ dotenv.config()
 const app: Express = express()
 const port = process.env.PORT || 3000
 
-const allowedOrigins = ['https://movie-bookie.vercel.app', 'http://localhost:5173']
+const allowedOrigins = ['https://movie-bookie.vercel.app']
 
 app.use(
 	cors({
@@ -33,7 +33,6 @@ app.use(express.json())
 
 app.use('/api', router)
 
-// This middleware should come after all route definitions
 app.use(errorHandlerMiddleware)
 
 const initDb = async () => {
