@@ -12,7 +12,7 @@ dotenv.config()
 const app: Express = express()
 const port = process.env.PORT || 3000
 
-const allowedOrigins = ['https://movie-bookie.vercel.app']
+const allowedOrigins = ['https://movie-bookie.vercel.app', 'http://localhost:5173']
 
 app.use(
 	cors({
@@ -30,14 +30,6 @@ app.use(
 )
 
 app.use(express.json())
-
-// Explicit CORS headers for /api/rooms
-app.use('/api/rooms', (req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'https://movie-bookie.vercel.app')
-	res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE')
-	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-	next()
-})
 
 app.use('/api', router)
 
