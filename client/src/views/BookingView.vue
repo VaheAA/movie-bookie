@@ -126,8 +126,10 @@ const sortedShowtimes = computed(() => {
 	const clonedArr = [...(currentRoom?.value?.showtimes || [])]
 
 	return clonedArr.sort((a, b) => {
-		const aExpired = isExpired(String(a.end_time))
-		const bExpired = isExpired(String(b.end_time))
+		const aExpired = isExpired(String(a.end_time), String(a.end_time))
+		const bExpired = isExpired(String(b.start_time), String(b.end_time))
+
+		console.log(aExpired, bExpired)
 
 		if (aExpired && !bExpired) {
 			return 1

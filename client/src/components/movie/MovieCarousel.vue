@@ -13,7 +13,7 @@
 					<p class="mb-4 font-medium text-md">Start: {{ formatDate(slotProps.data.start_time) }}</p>
 					<p class="mb-4 font-medium text-md">End: {{ formatDate(slotProps.data.end_time) }}</p>
 					<Button
-						:disabled="isExpired(slotProps.data.end_time)"
+						:disabled="isExpired(slotProps.data.start_time, slotProps.data.end_time)"
 						label="Book now"
 						class="mt-auto"
 						@click="selectMovie(slotProps.data.movie.id)"

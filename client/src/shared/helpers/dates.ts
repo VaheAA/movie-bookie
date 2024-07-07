@@ -1,4 +1,6 @@
 import dayjs from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
 
 export function formatDate(isoDateStr: string) {
 	const date = new Date(isoDateStr)
@@ -6,6 +8,6 @@ export function formatDate(isoDateStr: string) {
 	return dayjs(date).format('YYYY-MM-DD HH:mm')
 }
 
-export function isExpired(isoDateStr: string) {
-	return dayjs().isAfter(dayjs(isoDateStr))
+export function isExpired(startDate: string, endDate: string) {
+	return dayjs().isBetween(startDate, endDate) || dayjs().isAfter(endDate)
 }
