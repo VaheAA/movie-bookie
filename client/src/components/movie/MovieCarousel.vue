@@ -52,7 +52,8 @@ const responsiveOptions = ref([
 	{
 		breakpoint: '575px',
 		numVisible: 1,
-		numScroll: 1
+		numScroll: 1,
+		pagination: false
 	}
 ])
 
@@ -63,4 +64,10 @@ const selectMovie = (movieId: number) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+:deep(.p-carousel-indicator-list) {
+	@media (max-width: 728px) {
+		display: none !important;
+	}
+}
+</style>

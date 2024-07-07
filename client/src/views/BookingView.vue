@@ -5,6 +5,7 @@
 			<movie-carousel :room-name="currentRoom?.name" :showtimes="sortedShowtimes" @select-movie="selectMovie" />
 		</div>
 		<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
+			{{ selectedMovie }}
 			<MovieDetails
 				:room-name="currentRoom?.name"
 				:movie="selectedMovie.movie"
@@ -13,13 +14,13 @@
 				:available-seats="availableSeats"
 			/>
 			<p class="text-4xl text-center py-2">Selects your seats!</p>
-			<div class="flex gap-6">
+			<div class="flex flex-col flex-md-row gap-6">
 				<div v-if="currentRoom">
 					<span class="inline-block my-2">All seats:</span>
 					<BookingGrid :room="currentRoom" :booked-seats="bookedSeats" @toggle-seat="toggleSeat" />
 				</div>
 				<div class="flex-1 flex flex-col">
-					<div>
+					<div class="mb-8 mb-md-0">
 						<span class="inline-block my-2">Selected seats:</span>
 						<div>
 							<Button class="m-1" size="small" v-for="seat in selectedSeats" :key="seat" @click="toggleSeat(seat.id)">{{
