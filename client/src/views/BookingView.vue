@@ -5,13 +5,7 @@
 			<movie-carousel :room-name="currentRoom?.name" :showtimes="sortedShowtimes" @select-movie="selectMovie" />
 		</div>
 		<div class="flex flex-col gap-4 max-w-[1200px] mx-auto" v-if="selectedMovie && selectedMovie.movie">
-			<MovieDetails
-				:room-name="currentRoom?.name"
-				:movie="selectedMovie.movie"
-				:start="selectedMovie.start_time"
-				:end="String(selectedMovie.end_time)"
-				:available-seats="availableSeats"
-			/>
+			<MovieDetails :room-name="currentRoom?.name" :movie="selectedMovie.movie" :available-seats="availableSeats" />
 			<p class="text-4xl text-center py-2">Selects your seats!</p>
 			<div class="flex flex-col flex-md-row gap-6">
 				<div v-if="currentRoom">

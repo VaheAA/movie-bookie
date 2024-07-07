@@ -7,8 +7,6 @@
 			<div class="uppercase tracking-wide text-lg text-indigo-500 font-semibold">
 				{{ props.movie?.title }}
 			</div>
-			<span class="block mt-1 text-md leading-tight font-medium text-black">Start: {{ formatDate(props.start) }}</span>
-			<span class="block mt-1 text-md leading-tight font-medium text-black">End: {{ formatDate(props.end) }}</span>
 			<span class="block mt-1 text-md leading-tight font-medium text-black">Room: {{ props.roomName }}</span>
 			<span class="block mt-1 text-md leading-tight font-medium text-black">Available seats: {{ availableSeats }}</span>
 		</div>
