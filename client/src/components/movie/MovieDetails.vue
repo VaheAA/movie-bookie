@@ -15,13 +15,10 @@
 
 <script setup lang="ts">
 import type { IMovie } from '@/core'
-import { formatDate } from '@/shared/helpers'
 
 const props = defineProps<{
 	movie: IMovie | undefined
 	roomName: string | undefined
-	start: string
-	end: string
 	availableSeats: number
 }>()
 </script>
