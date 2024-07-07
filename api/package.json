@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production npx tsc",
-    "start": "node index.js",
+    "build": "cross-env NODE_ENV=production npx tsc",
+    "start": "cross-env NODE_ENV=production node dist/src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/index.ts",
     "seed": "npx sequelize-cli db:seed:all",
     "lint:fix": "eslint . --fix"
