@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import config from '../config'
+import config from '../db-vars'
 
 const sequelize = new Sequelize(
 	`postgres://${config.username}:${config.password}@${config.host}:5432/${config.database}`

@@ -1,5 +1,10 @@
 import dotenv from 'dotenv'
-dotenv.config()
+import path from 'path'
+
+const env = process.env.NODE_ENV || 'development'
+
+const envFilePath = path.resolve(process.cwd(), `.env.${env}`)
+dotenv.config({ path: envFilePath })
 
 const DATABASE_USER = process.env.POSTGRES_USER
 const DATABASE_NAME = process.env.POSTGRES_DB
@@ -12,5 +17,7 @@ const config = {
 	username: DATABASE_USER,
 	host: DATABASE_HOST
 }
+
+console.log(config)
 
 export default config
