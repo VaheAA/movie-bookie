@@ -8,10 +8,6 @@
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/index.ts",
     "seed": "npx sequelize-cli db:seed:all",
-    "db:dev:rm": "docker compose rm -s -f -v",
-    "db:dev:up": "npx kill-port 3000 && cross-env NODE_ENV=development docker compose up",
-    "db:prod:up": "npx kill-port 3000 && cross-env NODE_ENV=production docker compose up",
-    "docker:build": "docker-compose up --build",
     "lint:fix": "eslint . --fix"
   },
   "keywords": [],
