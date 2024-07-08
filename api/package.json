@@ -8,6 +8,7 @@
     "start": "cross-env NODE_ENV=production node dist/src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/index.ts",
     "seed": "cross-env NODE_ENV=production npx sequelize-cli db:seed:all",
+    "seed:dev": "cross-env NODE_ENV=development npx sequelize-cli db:seed:all",
     "lint:fix": "eslint . --fix"
   },
   "keywords": [],
