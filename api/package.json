@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production npx tsc",
     "start": "cross-env NODE_ENV=production node dist/src/index.js",
-    "dev": "cross-env NODE_ENV=production nodemon --legacy-watch src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/index.ts",
     "seed": "cross-env NODE_ENV=production npx sequelize-cli db:seed:all",
     "lint:fix": "eslint . --fix"
   },
